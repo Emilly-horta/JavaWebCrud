@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>
+
+  <p:dataTable  var="pessoa" value="#{managerCriarPessoa.listPessoa}" id="pessoaList">
+                    <p:column>
+                        <p:commandButton value="Apagar" styleClass="btn btn-danger" actionListener="#{managerCriarPessoa.deletePessoa(pessoa)}" update="@form"/>
+                    </p:column>
+                    <p:column>
+                        <p:button value="Editar" styleClass="btn btn-primary" href="editarView.xhtml?idPessoa=#{pessoa.id}" />
+                    </p:column>
+
+                    <p:column headerText="Id">
+                        <h:outputText value="#{pessoa.id}"/> 
+                    </p:column>
+
+                    <p:column headerText="Email">
+                        <h:outputText value="#{pessoa.email}"/>
+                    </p:column>
+
+                    <p:column headerText="Senha">
+                        <h:outputText value="#{pessoa.senha}"/>
+                    </p:column>
+                </p:dataTable>
+
+                <p:commandButton value="voltar" styleClass="btn btn-dark" action="CadastroView.xhtml"/>
+                <p:commandButton value="clear" styleClass="btn btn-danger" actionListener="#{managerCriarPessoa.deletaTodos()}" update="@form"/>
